@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>winter_vacation_job</title>
+    <style>
+         ul{
+             padding-left: 0%;
+             margin-top: 0em;
+         }
+        
+       li{
+           display: block;
+           width: 15em;
+           height: 6em; 
+           background-color: dimgrey;
+           
+           color: gold;
+          
+       }
+        .current {
+           background-color: orangered;
+       }
+       .left{
+            float:left;
+            margin-left: 10%;
+            width: 15em;
+            height:30em;
+            background-color: rgb(238, 255, 0);
+        }
+        .right{
+            float: left;
+            background-color: red;
+            width: 49em;
+            height:30em;
+        }
+        .header{
+            width: 100%;
+            height: 5em;
+            font-size: 2em;
+            text-align: center;
+            line-height: 5em;
+        }
+        #footer{
+            margin-top: 38.3%;
+            width: 100%;
+            height: 5em;
+            font-size: 2em;
+            text-align: center;
+            line-height: 5em;
+        }
+
+    </style>
+</head>
+
+<body>
+     <body background="dog.png" style="background-repeat:no-repeat;
+    background-size:100% 100%;background-attachment: fixed;"></body> 
+    
+    <div class="header">my winter_vacation job</div>
+    <div class="content">
+      <div class="left">
+        <ul id="list">
+            <li class="current">tab栏切换的实现</li>
+            <li >1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>总结</li>
+        </ul>
+      </div>
+      <div class="right">
+          
+      </div>
+    </div>
+       
+     <div id="footer"></div>
+    <script>
+     /*tab栏的实现*/
+       var list = document.querySelector('#list');
+       var lis= list.querySelectorAll('#list li');
+       for(var i=0;i<lis.length;i++){
+              lis[i].onclick=function(){
+                  for(var i=0;i<lis.length;i++){
+                      lis[i].className='';
+                  }
+                  this.className='current';
+              }
+
+       }
+       showtime()
+       /*末尾的当前时间*/
+       function showtime(){
+       var footer = document.getElementById('footer');
+       var date = new Date();
+       var year = date.getFullYear();
+       var month = date.getMonth();
+       var day = date.getDate();
+       var hour = date.getHours();
+       var min = date.getMinutes();
+       var sec = date.getSeconds();
+       
+       footer.innerHTML = year+"/"+(month+1)+"/"+day+"  "+hour+":"+min+":"+sec;
+       setTimeout(showtime,1000);
+       }
+    </script>
+
+ 
+     </body>
+</html>
