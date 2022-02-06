@@ -30,9 +30,9 @@
             height:30em;
             background-color: rgb(238, 255, 0);
         }
-        .right{
+        #right{
             float: left;
-            background-color: red;
+            
             width: 49em;
             height:30em;
         }
@@ -70,25 +70,45 @@
             <li>总结</li>
         </ul>
       </div>
-      <div class="right">
-          
+      <div id="right">
+        <div class="tab">
+            <img src="jsone.png" style="width: 100%;">
+        </div>
+        <div class="tab" style="display:none">
+            <img src="jstwo.png" style="width: 100%;">
+        </div>
+        <div class="tab" style="display:none">
+            12</div>
+        <div class="tab" style="display:none">
+            1</div>
+        <div class="tab" style="display:none">
+            3</div>
       </div>
     </div>
        
      <div id="footer"></div>
     <script>
+       
      /*tab栏的实现*/
        var list = document.querySelector('#list');
        var lis= list.querySelectorAll('#list li');
+       var tab = document.querySelectorAll('.tab');
        for(var i=0;i<lis.length;i++){
+              lis[i].setAttribute('index',i);
               lis[i].onclick=function(){
                   for(var i=0;i<lis.length;i++){
                       lis[i].className='';
                   }
                   this.className='current';
+                  var index=this.getAttribute('index');
+                  
+                  for(var i=0;i<tab.length;i++){
+                      tab[i].style.display = 'none';
+                  }
+                  tab[index].style.display = 'block';
               }
-
        }
+      
        showtime()
        /*末尾的当前时间*/
        function showtime(){
