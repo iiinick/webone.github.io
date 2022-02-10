@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>winter_vacation_job</title>
+    <script src="jQuery.js"></script>
     <style>
          ul{
              padding-left: 0%;
@@ -14,10 +15,12 @@
        li{
            display: block;
            width: 15em;
-           height: 6em; 
+           height: 5.9em; 
            background-color: dimgrey;
-           
+           text-align: center;
            color: gold;
+           border: 1px double rgb(31, 29, 29);
+
           
        }
         .current {
@@ -51,12 +54,12 @@
             text-align: center;
             line-height: 5em;
         }
-
+       
     </style>
 </head>
 
 <body>
-     <body background="dog.png" style="background-repeat:no-repeat;
+     <body background="xi.jpg" style="background-repeat:no-repeat;
     background-size:100% 100%;background-attachment: fixed;"></body> 
     
     <div class="header">my winter_vacation job</div>
@@ -72,7 +75,7 @@
       </div>
       <div id="right">
         <div class="tab">
-            <img src="jsone.png" style="width: 100%;">
+            <img src="r.png" style="width: 100%;">
         </div>
         <div class="tab" style="display:none">
             <img src="jstwo.png" style="width: 100%;">
@@ -81,7 +84,7 @@
             12</div>
         <div class="tab" style="display:none">
             1</div>
-        <div class="tab" style="display:none">
+        <div class="tab"  style="display:none">
             3</div>
       </div>
     </div>
@@ -93,6 +96,7 @@
        var list = document.querySelector('#list');
        var lis= list.querySelectorAll('#list li');
        var tab = document.querySelectorAll('.tab');
+      
        for(var i=0;i<lis.length;i++){
               lis[i].setAttribute('index',i);
               lis[i].onclick=function(){
@@ -109,6 +113,20 @@
               }
        }
       
+    /*用jQuery实现tab栏高度的变化*/
+      $(function(){
+          $("ul li").mouseover(function(){
+              $(this).stop().animate({
+                  height:148
+              }).siblings("li").stop().animate({
+                  height:81
+              })
+              
+              
+          })
+
+      });
+
        showtime()
        /*末尾的当前时间*/
        function showtime(){
@@ -124,8 +142,8 @@
        footer.innerHTML = year+"/"+(month+1)+"/"+day+"  "+hour+":"+min+":"+sec;
        setTimeout(showtime,1000);
        }
-    </script>
 
- 
+       
+    </script>
      </body>
 </html>
