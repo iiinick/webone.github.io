@@ -24,7 +24,8 @@
           
        }
         .current {
-           background-color: orangered;
+            background-image: url("dogs.png");
+           background-size: 200%;
        }
        .left{
             float:left;
@@ -54,23 +55,26 @@
             text-align: center;
             line-height: 5em;
         }
+        .others{
+            background-image: url("lang.png");
+        }
        
     </style>
 </head>
 
 <body>
-     <body background="xi.jpg" style="background-repeat:no-repeat;
+     <body background="miku.png" style="background-repeat:no-repeat;
     background-size:100% 100%;background-attachment: fixed;"></body> 
     
     <div class="header">my winter_vacation job</div>
     <div class="content">
       <div class="left">
         <ul id="list">
-            <li class="current">tab栏切换的实现</li>
-            <li >1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>总结</li>
+            <li class="current">js</li>
+            <li class="others">jQuery</li>
+            <li class="others">php</li>
+            <li class="others">mysql</li>
+            <li class="others">summarize</li>
         </ul>
       </div>
       <div id="right">
@@ -84,9 +88,11 @@
             <img src="mx.png" style="width: 100%;">
         </div>
         <div class="tab" style="display:none">
-            1</div>
+            <img src="mao.png" style="width: 100%;">
+            </div>
         <div class="tab"  style="display:none">
-            3</div>
+            <img src="nai.png" style="width: 100%;">
+        </div>
       </div>
     </div>
        
@@ -102,7 +108,7 @@
               lis[i].setAttribute('index',i);
               lis[i].onclick=function(){
                   for(var i=0;i<lis.length;i++){
-                      lis[i].className='';
+                      lis[i].className='others';
                   }
                   this.className='current';
                   var index=this.getAttribute('index');
@@ -116,7 +122,7 @@
       
     /*用jQuery实现tab栏高度的变化*/
       $(function(){
-          $("ul li").mouseover(function(){
+          $("ul li").click(function(){
               $(this).stop().animate({
                   height:148
               }).siblings("li").stop().animate({
