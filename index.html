@@ -48,7 +48,7 @@
             line-height: 5em;
         }
         #footer{
-            margin-top: 38.3%;
+            margin-top: 0%;
             width: 100%;
             height: 5em;
             font-size: 2em;
@@ -58,7 +58,22 @@
         .others{
             background-image: url("lang.png");
         }
-       
+        .flex-container{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 25em;
+            background-color: blue;
+            margin-top: 38.8%;
+        }
+        .flex-item{
+              background-color: red;
+              width:10%;
+        }
+        #middle{
+               background-color:(0,0,0,1);
+               width:80%;
+        }
     </style>
 </head>
 
@@ -95,7 +110,18 @@
         </div>
       </div>
     </div>
-       
+       <div class="flex-container" >
+          <div class="flex-item"  id="prec">
+            <img src="24.png" style="width: 100%">
+          </div>
+          <div id="middle">
+            <img src="p1a.jpg" style="width: 100%">
+          </div>
+          <div class="flex-item"  id="next">
+            <img src="23.png" style="width: 100%">
+          </div>
+
+       </div>
      <div id="footer"></div>
     <script>
        
@@ -119,21 +145,69 @@
                   tab[index].style.display = 'block';
               }
        }
-      
+       
+    /*实现轮播图*/
+    var imgs=["p1a.jpg","p2a.jpg","p3a.jpg","p4a.jpg","p5a.jpg"];
+    var prec= document.getElementById('prec');
+    var next= document.getElementById('next');
+    var middle=document.getElementById('middle');
+    var num=0;
+    $(function(){
+        /*点击左箭头切换图片*/
+         $(prec).click(function(){
+              num++;
+              if(num>=imgs.length){
+                  num=0;
+              }
+              middle.innerHTML="<img src="+imgs[num]+" style='width: 100%'>"
+             
+         })
+
+    })
+   $(function(){
+       /*点击右箭头切换图片*/
+       $(next).click(function(){
+              num--;
+              if(num<0){
+                  num=(imgs.length-1);
+              }
+              middle.innerHTML="<img src="+imgs[num]+" style='width: 100%'>"
+
+       })
+
+   })
+    /*实现鼠标不在箭头上时的5秒自动切换*/
+    $(function switchover (){
+       num++;
+       if(num>=imgs.length){
+                  num=0;
+              }
+       middle.innerHTML="<img src="+imgs[num]+" style='width: 100%'>"
+       setTimeout(switchover,5000);
+    })
+
+
+
+
+
+
+
+
+
+
+
     /*用jQuery实现tab栏高度的变化*/
-      $(function(){
+   $(function(){
           $("ul li").click(function(){
               $(this).stop().animate({
                   height:148
               }).siblings("li").stop().animate({
                   height:81
               })
-              
-              
           })
 
       });
-
+     
        showtime()
        /*末尾的当前时间*/
        function showtime(){
