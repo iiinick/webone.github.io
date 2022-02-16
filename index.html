@@ -62,11 +62,11 @@
             flex-direction: row;
             width: 100%;
             height: 25em;
-            background-color: blue;
-            margin-top: 7.8%;
+            
+            margin-top: 6%;
         }
         .flex-item{
-              background-color: red;
+              
               width:10%;
         }
         #middle{
@@ -84,6 +84,19 @@
             float: unset;
             width: 4em;
         }
+        #middleul{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+           position: relative;
+           left:0px;
+            
+        }
+        #middleul li{
+            width: 100%;
+           
+        }
+        
     </style>
 </head>
 
@@ -129,7 +142,13 @@
             <img src="24.png" style="width: 100%">
           </div>
           <div id="middle">
-            <img src="p1a.jpg" style="width: 100%">
+            <ul id="middleul">
+                <li><img src="p1a.jpg" style="width: 100%"></li>
+                <li style="display: none;"><img src="p2a.jpg" style="width: 100%"></li>
+                <li style="display: none;"><img src="p3a.jpg" style="width: 100%"></li>
+                <li style="display: none;"><img src="p4a.jpg" style="width: 100%"></li>
+                <li style="display: none;"><img src="p5a.jpg" style="width: 100%"></li>
+            </ul>
           </div>
           <div class="flex-item"  id="next">
             <img src="23.png" style="width: 100%">
@@ -166,16 +185,31 @@
     var next= document.getElementById('next');
     var middle=document.getElementById('middle');
     var num=0;
+   
+    var middleul=document.getElementById('middleul');
+    var ps= middleul.querySelectorAll('#middleul li');
     
+
+    for(var i=0;i<ps.length;i++){
+        ps[i].setAttribute('num',i);
+    }
+
+   
+
     $(function(){
         /*点击左箭头切换图片*/
          $(prec).click(function(){
+           
               num++;
               if(num>=imgs.length){
                   num=0;
-                  
+                  $(ps[imgs.length-1]).hide(400);
+                  $(ps[0]).show(300);
               }
-            middle.innerHTML="<img src="+imgs[num]+" style='width: 100%'>"
+              else{
+              $(ps[num-1]).hide(400);
+              $(ps[num]).show(300);
+              }
             
          })
 
@@ -186,8 +220,15 @@
               num--;
               if(num<0){
                   num=(imgs.length-1);
+                  $(ps[0]).hide(400);
+                  $(ps[imgs.length-1]).show(300);
               }
-              middle.innerHTML="<img src="+imgs[num]+" style='width: 100%'>"
+              else{
+                $(ps[num+1]).hide(400);
+              $(ps[num]).show(300);
+              }
+              
+             
 
        })
 
@@ -198,15 +239,17 @@
    
     /*实现鼠标不在箭头上时的5秒自动切换*/
     function switchover (){
-        
-       num++;
-       
-       if(num>=imgs.length){
+        num++;
+              if(num>=imgs.length){
                   num=0;
+                  $(ps[imgs.length-1]).hide(500);
+                  $(ps[0]).show(500);
               }
-       middle.innerHTML="<img src="+imgs[num]+" style='width: 100%'>"
-      
-        
+              else{
+              $(ps[num-1]).hide(500);
+              $(ps[num]).show(500);
+              }
+    
     }
      
     
